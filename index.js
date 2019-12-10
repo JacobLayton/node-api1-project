@@ -4,14 +4,15 @@ const db = require("./data/db.js");
 
 const server = express();
 
-server.use(express.json()); // <<<<<<<<<<<<<<< to parse JSON in POST
+server.use(express.json()); // <<<<<<<<<<<<<<< needed to parse JSON in POST
+// server.use(cors());
 
 server.get("/", (req, res) => {
   res.send("Hello web 20 node edition");
 });
 
 // The R in CRUD - READ
-server.get("/users", function(req, res) {
+server.get("/users", function (req, res) {
   db.find()
     .then(users => {
       res.status(200).json(users);
